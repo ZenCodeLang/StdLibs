@@ -1,5 +1,8 @@
+[Native("stdlib::Arrays")]
 export expand <T : Comparable<T>> T[] {
+	[Native("sort")]
 	public extern sort() as void;
+	[Native("sorted")]
 	public extern sorted() as T[];
 }
 
@@ -10,27 +13,67 @@ export expand <T : Hashable<T>> T[] {
 	}
 }
 
+[Native("stdlib::Arrays")]
 export expand <T> T[] {
+	[Native("sortWithComparator")]
 	public extern sort(comparator as function(a as T, b as T) as int) as void;
+	[Native("sortedWithComparator")]
 	public extern sorted(comparator as function(a as T, b as T) as int) as T[];
+	[Native("copy")]
 	public extern copy() as T[];
+	[Native("copyResize")]
 	public extern copy(newSize as int) as T[];
+	[Native("copyTo")]
 	public extern copyTo(target as T[], sourceOffset as int, targetOffset as int, length as int) as void;
 	
-	public get first as T?;
-	public get last as T?;
-	public get reversed as T[];
+	public get first as T?
+		=> this.isEmpty ? null : this[0];
 	
+	public get last as T?
+		=> this.isEmpty ? null : this[$ - 1];
+	
+	[Native("reverse")]
+	public reverse() as void {
+		for i in 0 .. length / 2 {
+			var temp = this[i];
+			this[i] = this[length - i - 1];
+			this[length - i - 1] = temp;
+		}
+	}
+	
+	// TODO: fix compilation for this
+	/*[Native("reversed")]
+	public reversed() as T[] {
+		return new T[](this, (i, value) => this[length - i - 1]);
+	}*/
+	
+	[Native("mapValues")]
 	public map<U>(projection as function(value as T) as U) as U[] {
 		return new U[]<T>(this, projection);
 	}
 	
+	[Native("mapKeyValues")]
 	public map<U>(projection as function(index as int, value as T) as U) as U[] {
 		return new U[]<T>(this, projection);
 	}
 	
-	public extern filter(predicate as function(value as T) as bool) as T[];
-	public extern filter(predicate as function(index as int, value as T) as bool) as T[];
+	[Native("filterValues")]
+	public filter(predicate as function(value as T) as bool) as T[] {
+		var values = new List<T>();
+		for value in this
+			if predicate(value)
+				values.add(value);
+		return values as T[];
+	}
+	
+	[Native("filterKeyValues")]
+	public filter(predicate as function(index as int, value as T) as bool) as T[] {
+		var values = new List<T>();
+		for i, value in this
+			if predicate(i, value)
+				values.add(value);
+		return values as T[];
+	}
 	
 	public each(consumer as function(value as T) as void) as void {
 		for value in this
@@ -91,17 +134,23 @@ export expand <T> T[] {
 	}
 	
 	public last(predicate as function(value as T) as bool) as T? {
-		for i, value in this.reversed
-			if predicate(value)
-				return value;
+		var i = length;
+		while i > 0 {
+			i--;
+			if predicate(this[i])
+				return this[i];
+		}
 		
 		return null;
 	}
 	
 	public last(predicate as function(index as int, value as T) as bool) as T? {
-		for i, value in this.reversed
-			if predicate(i, value)
-				return value;
+		var i = length;
+		while i > 0 {
+			i--;
+			if predicate(i, this[i])
+				return this[i];
+		}
 		
 		return null;
 	}

@@ -1,7 +1,10 @@
+[Native("stdlib::String")]
 export expand string {
+	[Native("contains")]
 	public const in(c as char) as bool
 		=> indexOf(c) >= 0;
 	
+	[Native("indexOf")]
 	public const indexOf(c as char) as int {
 		for i in 0 .. length {
 			if this[i] == c
@@ -11,6 +14,7 @@ export expand string {
 		return -1;
 	}
 	
+	[Native("indexOfFrom")]
 	public const indexOf(c as char, from as int) as int {
 		for i in from .. length {
 			if this[i] == c
@@ -20,6 +24,7 @@ export expand string {
 		return -1;
 	}
 	
+	[Native("lastIndexOf")]
 	public const lastIndexOf(c as char) as int {
 		var i = length;
 		while i > 0 {
@@ -31,6 +36,7 @@ export expand string {
 		return -1;
 	}
 	
+	[Native("lastIndexOfFrom")]
 	public const lastIndexOf(c as char, until as int) as int {
 		var i = until;
 		while i > 0 {
@@ -42,6 +48,7 @@ export expand string {
 		return -1;
 	}
 	
+	[Native("split")]
 	public const split(delimiter as char) as string[] {
 		val result = new List<string>();
 		var start = 0;
@@ -55,6 +62,7 @@ export expand string {
 		return result as string[];
 	}
 	
+	[Native("trim")]
 	public const trim() as string {
 		var from = 0;
 		while from < this.length && this[from] in [' ', '\t', '\r', '\n']
@@ -66,9 +74,11 @@ export expand string {
 		return to < from ? "" : this[from .. to];
 	}
 	
+	[Native("lpad")]
 	public const lpad(length as int, c as char) as string
 		=> this.length >= length ? this : c.times(length - this.length) + this;
 	
+	[Native("rpad")]
 	public const rpad(length as int, c as char) as string
 		=> this.length >= length ? this : this + c.times(length - this.length);
 }

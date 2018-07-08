@@ -4,11 +4,11 @@
 	"globals": {
 		"Comparable": {"type": "Definition", "definition": "Comparable"},
 		"Exception": {"type": "Definition", "definition": "Exception"},
+		"EqualsComparable": {"type": "Definition", "definition": "EqualsComparable"},
 		"Hashable": {"type": "Definition", "definition": "Hashable"},
 		"IllegalArgumentException": {"type": "Definition", "definition": "IllegalArgumentException"},
 		"StringBuilder": {"type": "Definition", "definition": "StringBuilder"},
 		"StringBuildable": {"type": "Definition", "definition": "StringBuildable"},
-		"panic": {"type": "Definition", "definition": "panic"},
 		"Result": {"type": "Definition", "definition": "Result"}
 	}
 }

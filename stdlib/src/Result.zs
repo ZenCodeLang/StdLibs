@@ -19,7 +19,7 @@ export variant Result<T, E> {
 	public expect() as T {
 		return match this {
 			Ok(result) => result,
-			Error(error) => panic<T>("expect() called on an error value")
+			Error(error) => panic "expect() called on an error value"
 		};
 	}
 	
@@ -39,7 +39,7 @@ export variant Result<T, E> {
 }
 
 export expand <T, E : Exception> Result<T, E> {
-	public unwrap() as T {
+	public unwrap() as T throws E {
 		return match this {
 			Ok(result) => result,
 			Error(error) => throw error
