@@ -1,21 +1,18 @@
+import stdlib.List;
+
 export class Stack<T> {
-	var values as T[] = new T[](8);
-	var size as int : get = 0;
+	var values as List<T> = new List<T>();
 	
-	public push(value as T) as void {
-		if size == values.length
-			values = values.copy(values.length * 2);
-			
-		values[size++] = value;
-	}
+	public push(value as T) as void
+		=> values.add(value);
 	
-	public pop() as T {
-		if size == 0
-			throw new NoSuchElementException("Stack is empty!");
-		
-		return values[--size];
-	}
+	public get size as usize
+		=> values.length;
 	
-	public get empty as bool
-		=> size == 0;
+	[Precondition(ENFORCE, size > 0, "Cannot pop an empty stack")]
+	public pop() as T
+		=> values.remove(values.length - 1);
+	
+	public get isEmpty as bool
+		=> values.isEmpty;
 }

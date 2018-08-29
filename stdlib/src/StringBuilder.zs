@@ -3,14 +3,14 @@ export class StringBuilder {
 	[Native("constructor")]
 	public extern this();
 	[Native("constructorWithCapacity")]
-	public extern this(capacity as int);
+	public extern this(capacity as usize);
 	[Native("constructorWithValue")]
 	public extern this(value as string);
 	
 	[Native("isEmpty")]
 	public extern get isEmpty as bool;
 	[Native("length")]
-	public extern get length as int;
+	public extern get length as usize;
 	
 	[Native("appendBool")]
 	public extern <<(value as bool) as StringBuilder;
@@ -30,6 +30,8 @@ export class StringBuilder {
 	public extern <<(value as long) as StringBuilder;
 	[Native("appendULong")]
 	public extern <<(value as ulong) as StringBuilder;
+	[Native("appendUSize")]
+	public extern <<(value as usize) as StringBuilder;
 	[Native("appendFloat")]
 	public extern <<(value as float) as StringBuilder;
 	[Native("appendDouble")]

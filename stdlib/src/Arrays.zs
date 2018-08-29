@@ -9,7 +9,7 @@ export expand <T : Comparable<T>> T[] {
 export expand <T : Hashable<T>> T[] {
 	public implements Hashable<T[]> {
 		public extern hashCode() as int;
-		public extern == (other as T) as bool;
+		public extern == (other as T[]) as bool;
 	}
 }
 
@@ -22,15 +22,15 @@ export expand <T> T[] {
 	[Native("copy")]
 	public extern copy() as T[];
 	[Native("copyResize")]
-	public extern copy(newSize as int) as T[];
+	public extern copy(newSize as usize) as T[];
 	[Native("copyTo")]
-	public extern copyTo(target as T[], sourceOffset as int, targetOffset as int, length as int) as void;
+	public extern copyTo(target as T[], sourceOffset as usize, targetOffset as usize, length as usize) as void;
 	
 	public get first as T?
 		=> this.isEmpty ? null : this[0];
 	
 	public get last as T?
-		=> this.isEmpty ? null : this[$ - 1];
+		=> this.isEmpty ? null : this[$ - (1 as usize)];
 	
 	[Native("reverse")]
 	public reverse() as void {
@@ -53,7 +53,7 @@ export expand <T> T[] {
 	}
 	
 	[Native("mapKeyValues")]
-	public map<U>(projection as function(index as int, value as T) as U) as U[] {
+	public map<U>(projection as function(index as usize, value as T) as U) as U[] {
 		return new U[]<T>(this, projection);
 	}
 	
@@ -67,7 +67,7 @@ export expand <T> T[] {
 	}
 	
 	[Native("filterKeyValues")]
-	public filter(predicate as function(index as int, value as T) as bool) as T[] {
+	public filter(predicate as function(index as usize, value as T) as bool) as T[] {
 		var values = new List<T>();
 		for i, value in this
 			if predicate(i, value)
@@ -80,7 +80,7 @@ export expand <T> T[] {
 			consumer(value);
 	}
 	
-	public each(consumer as function(index as int, value as T) as void) as void {
+	public each(consumer as function(index as usize, value as T) as void) as void {
 		for i, value in this
 			consumer(i, value);
 	}
@@ -93,7 +93,7 @@ export expand <T> T[] {
 		return false;
 	}
 	
-	public contains(predicate as function(index as int, value as T) as bool) as bool {
+	public contains(predicate as function(index as usize, value as T) as bool) as bool {
 		for i, value in this
 			if predicate(i, value)
 				return true;
@@ -109,7 +109,7 @@ export expand <T> T[] {
 		return true;
 	}
 	
-	public all(predicate as function(i as int, value as T) as bool) as bool {
+	public all(predicate as function(i as usize, value as T) as bool) as bool {
 		for i, value in this
 			if !predicate(i, value)
 				return false;
@@ -125,7 +125,7 @@ export expand <T> T[] {
 		return null;
 	}
 	
-	public first(predicate as function(i as int, value as T) as bool) as T? {
+	public first(predicate as function(i as usize, value as T) as bool) as T? {
 		for i, value in this
 			if predicate(i, value)
 				return value;
@@ -144,7 +144,7 @@ export expand <T> T[] {
 		return null;
 	}
 	
-	public last(predicate as function(index as int, value as T) as bool) as T? {
+	public last(predicate as function(index as usize, value as T) as bool) as T? {
 		var i = length;
 		while i > 0 {
 			i--;
@@ -155,7 +155,7 @@ export expand <T> T[] {
 		return null;
 	}
 	
-	public count(predicate as function(value as T) as bool) as int {
+	public count(predicate as function(value as T) as bool) as usize {
 		var result = 0;
 		for value in this
 			if predicate(value)
@@ -163,11 +163,18 @@ export expand <T> T[] {
 		return result;
 	}
 	
-	public count(predicate as function(index as int, value as T) as bool) as int {
+	public count(predicate as function(index as usize, value as T) as bool) as usize {
 		var result = 0;
 		for i, value in this
 			if predicate(i, value)
 				result++;
+		return result;
+	}
+	
+	public index<K>(key as function(value as T) as K) as T[K] {
+		var result = new T[K];
+		for value in this
+			result[key(value)] = value;
 		return result;
 	}
 }

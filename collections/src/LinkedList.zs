@@ -1,9 +1,9 @@
 export class LinkedList<T> {
 	var first as Node?;
 	var last as Node?;
-	var size as int : get;
+	var size as usize : get;
 	
-	public get empty as bool
+	public get isEmpty as bool
 		=> first == null;
 	
 	public add(value as T) as void {
@@ -23,26 +23,21 @@ export class LinkedList<T> {
 		size = 0;
 	}
 	
-	public [](index as int) as T {
+	[Precondition(ENFORCE, index < size, "Index out of bounds")]
+	public [](index as usize) as T {
 		var node = first;
-		while index > 0 {
-			if node == null
-				return panic<T>("index out of bounds");
-			
+		while index > 0 && node != null
 			node = node.next;
-		}
 		
 		if node == null
-			return panic<T>("index out of bounds");
+			panic "index out of bounds";
 		
 		return node.value;
 	}
 	
 	public implements Queue<T> {
+		[Precondition(ENFORCE, first != null, "Cannot poll an empty queue")]
 		poll() as T {
-			if first == null
-				return panic<T>("Cannot poll an empty queue");
-			
 			val result = first.value;
 			first = first.next;
 			if first == null
@@ -54,7 +49,7 @@ export class LinkedList<T> {
 		}
 		
 		peek() as T? {
-			return first.value;
+			return first == null ? null : first.value;
 		}
 		
 		offer(value as T) as void
