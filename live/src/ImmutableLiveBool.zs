@@ -11,6 +11,6 @@ export class ImmutableLiveBool {
 	}
 	
 	public implements LiveBool {
-		addListener(listener) => new DummyListenerHandle<LiveBool.Listener>(listener);
+		addListener(listener) => new DummyListenerHandle<LiveBool.Listener>`unique(listener);
 	}
 }

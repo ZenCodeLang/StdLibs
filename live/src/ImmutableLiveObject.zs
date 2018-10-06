@@ -8,6 +8,6 @@ export class ImmutableLiveObject<T> {
 	}
 	
 	public implements LiveObject<T> {
-		addListener(listener) => new DummyListenerHandle<LiveObject<T>.Listener<T>>(listener);
+		addListener(listener) => new DummyListenerHandle<LiveObject<T>.Listener<T>>`unique(listener);
 	}
 }

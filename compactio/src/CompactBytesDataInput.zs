@@ -16,15 +16,15 @@ export class CompactBytesDataInput {
 	private const P55 as ulong = 1UL << 55;
 	private const P56 as ulong = 1UL << 56;
 	
-	val data as const byte[];
+	val data as byte[]`borrow:this;
 	var offset as usize : get;
 	
-	public this(data as const byte[]) {
+	public this(data as byte[]`borrow:this) {
 		this.data = data;
 		this.offset = 0;
 	}
 	
-	public this(data as const byte[], offset as usize) {
+	public this(data as byte[]`borrow:this, offset as usize) {
 		this.data = data;
 		this.offset = offset;
 	}

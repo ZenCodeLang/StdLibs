@@ -1,5 +1,5 @@
 export interface StringBuildable {
-	toString(output as StringBuilder) as void;
+	toString(output as StringBuilder`borrow) as void;
 	
 	as string
 		=> new StringBuilder() << this;

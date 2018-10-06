@@ -41,24 +41,22 @@ export expand <T> T[] {
 		}
 	}
 	
-	// TODO: fix compilation for this
+	// TODO: fix compilation for these
 	/*[Native("reversed")]
 	public reversed() as T[] {
 		return new T[](this, (i, value) => this[length - i - 1]);
 	}*/
 	
 	[Native("mapValues")]
-	public map<U>(projection as function(value as T) as U) as U[] {
-		return new U[]<T>(this, projection);
-	}
+	public map<U>(projection as function(value as T`borrow) as U) as U[]
+		=> new U[]<T>(this, projection);
 	
 	[Native("mapKeyValues")]
-	public map<U>(projection as function(index as usize, value as T) as U) as U[] {
-		return new U[]<T>(this, projection);
-	}
+	public map<U>(projection as function(index as usize, value as T`borrow) as U) as U[]
+		=> new U[]<T>(this, projection);
 	
 	[Native("filterValues")]
-	public filter(predicate as function(value as T) as bool) as T[] {
+	public filter(predicate as function(value as T`borrow) as bool) as T[] {
 		var values = new List<T>();
 		for value in this
 			if predicate(value)

@@ -41,7 +41,7 @@ export class StringBuilder {
 	[Native("appendString")]
 	public extern <<(value as string) as StringBuilder;
 	
-	public <<(value as StringBuildable) as StringBuilder {
+	public <<`shared(value as StringBuildable`borrow) as StringBuilder`shared {
 		value.toString(this);
 		return this;
 	}

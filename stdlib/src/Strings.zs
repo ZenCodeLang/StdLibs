@@ -89,8 +89,8 @@ export expand string {
 		=> this.length >= length ? this : this + c.times(length - this.length);
 		
 	[Native("toAsciiBytes")]
-	public const toAsciiBytes() as byte[];
+	public const toAsciiBytes() as byte[]`unique;
 	
 	[Native("toUTF8Bytes")]
-	public const toUTF8Bytes() as byte[];
+	public const toUTF8Bytes() as byte[]`unique;
 }

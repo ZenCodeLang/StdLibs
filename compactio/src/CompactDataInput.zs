@@ -1,103 +1,103 @@
 export interface CompactDataInput {
-	readBool() as bool;
+	readBool`mutable() as bool;
 	
-	readByte() as sbyte;
+	readByte`mutable() as byte;
 	
-	readSByte() as byte;
+	readSByte`mutable() as sbyte;
 	
-	readShort() as short;
+	readShort`mutable() as short;
 	
-	readUShort() as ushort;
+	readUShort`mutable() as ushort;
 	
-	readInt() as int;
+	readInt`mutable() as int;
 	
-	readUInt() as uint;
+	readUInt`mutable() as uint;
 	
-	readLong() as long;
+	readLong`mutable() as long;
 	
-	readULong() as ulong;
+	readULong`mutable() as ulong;
 	
-	readVarInt() as int;
+	readVarInt`mutable() as int;
 	
-	readVarUInt() as uint;
+	readVarUInt`mutable() as uint;
 	
-	readVarLong() as long;
+	readVarLong`mutable() as long;
 	
-	readVarULong() as ulong;
+	readVarULong`mutable() as ulong;
 	
-	readFloat() as float;
+	readFloat`mutable() as float;
 	
-	readDouble() as double;
+	readDouble`mutable() as double;
 	
-	readChar() as char;
+	readChar`mutable() as char;
 	
-	readString() as string;
+	readString`mutable() as string;
 	
-	readBytes() as byte[];
+	readBytes`mutable() as byte[];
 	
-	readRawBytes(length as usize) as byte[];
+	readRawBytes`mutable(length as usize) as byte[];
 	
-	readBoolArray() as bool[];
+	readBoolArray`mutable() as bool[];
 	
-	readByteArray() as byte[];
+	readByteArray`mutable() as byte[];
 	
-	readSByteArray() as sbyte[];
+	readSByteArray`mutable() as sbyte[];
 	
-	readShortArray() as short[];
+	readShortArray`mutable() as short[];
 	
-	readShortArrayRaw(length as usize) as short[];
+	readShortArrayRaw`mutable(length as usize) as short[];
 	
-	readUShortArray() as ushort[];
+	readUShortArray`mutable() as ushort[];
 	
-	readUShortArrayRaw(length as usize) as ushort[];
+	readUShortArrayRaw`mutable(length as usize) as ushort[];
 	
-	readVarIntArray() as int[];
+	readVarIntArray`mutable() as int[];
 	
-	readVarIntArrayRaw(length as usize) as int[];
+	readVarIntArrayRaw`mutable(length as usize) as int[];
 	
-	readVarUIntArray() as uint[];
+	readVarUIntArray`mutable() as uint[];
 	
-	readVarUIntArrayRaw(length as usize) as uint[];
+	readVarUIntArrayRaw`mutable(length as usize) as uint[];
 	
-	readIntArray() as int[];
+	readIntArray`mutable() as int[];
 	
-	readIntArrayRaw(length as usize) as int[];
+	readIntArrayRaw`mutable(length as usize) as int[];
 	
-	readUIntArray() as uint[];
+	readUIntArray`mutable() as uint[];
 	
-	readUIntArrayRaw(length as usize) as uint[];
+	readUIntArrayRaw`mutable(length as usize) as uint[];
 	
-	readVarLongArray() as long[];
+	readVarLongArray`mutable() as long[];
 	
-	readVarLongArrayRaw(length as usize) as long[];
+	readVarLongArrayRaw`mutable(length as usize) as long[];
 	
-	readVarULongArray() as ulong[];
+	readVarULongArray`mutable() as ulong[];
 	
-	readVarULongArrayRaw(length as usize) as ulong[];
+	readVarULongArrayRaw`mutable(length as usize) as ulong[];
 	
-	readLongArray() as long[];
+	readLongArray`mutable() as long[];
 	
-	readLongArrayRaw(length as usize) as long[];
+	readLongArrayRaw`mutable(length as usize) as long[];
 	
-	readULongArray() as ulong[];
+	readULongArray`mutable() as ulong[];
 	
-	readULongArrayRaw(length as usize) as ulong[];
+	readULongArrayRaw`mutable(length as usize) as ulong[];
 	
-	readFloatArray() as float[];
+	readFloatArray`mutable() as float[];
 	
-	readFloatArrayRaw(length as usize) as float[];
+	readFloatArrayRaw`mutable(length as usize) as float[];
 	
-	readDoubleArray() as double[];
+	readDoubleArray`mutable() as double[];
 	
-	readDoubleArrayRaw(length as usize) as double[];
+	readDoubleArrayRaw`mutable(length as usize) as double[];
 	
-	readStringArray() as string[];
+	readStringArray`mutable() as string[];
 	
-	readStringArrayRaw(length as usize) as string[];
+	readStringArrayRaw`mutable(length as usize) as string[];
 	
-	skip(bytes as usize) as void;
+	skip`mutable(bytes as usize) as void;
 	
-	hasMore() as bool;
+	hasMore`mutable() as bool;
 	
 	~this;
 }

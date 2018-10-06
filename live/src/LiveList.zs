@@ -10,7 +10,7 @@ export interface LiveList<T> : Iterable<T> {
 	
 	[](index as usize) as T;
 	
-	addListener(listener as Listener<T>) as ListenerHandle<T>;
+	addListener(listener as Listener<T>) as ListenerHandle<T>`unique;
 	
 	public interface Listener<T> {
 		onInserted(index as usize, value as T) as void;
