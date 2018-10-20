@@ -1,5 +1,5 @@
 [Native("stdlib::USize")]
-expand usize {
+public expand usize {
 	[Native("toHexString")]
 	public extern toHexString() as string;
 	

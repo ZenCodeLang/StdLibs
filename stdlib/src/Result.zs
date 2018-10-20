@@ -1,4 +1,4 @@
-export variant Result<T, E> {
+public variant Result<T, E> {
 	Ok(T),
 	Error(E);
 	
@@ -38,7 +38,7 @@ export variant Result<T, E> {
 	}
 }
 
-export expand <T, E : Exception> Result<T, E> {
+public expand <T, E : Exception> Result<T, E> {
 	public unwrap() as T throws E {
 		return match this {
 			Ok(result) => result,

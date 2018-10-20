@@ -1,5 +1,5 @@
 [Native("io::InputStream")]
-export interface InputStream {
+public interface InputStream {
 	[Native("read")]
 	read() as int throws IOException;
 	

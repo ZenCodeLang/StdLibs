@@ -1,6 +1,6 @@
 import listeners.ListenerList;
 
-class LiveArrayList<T> {
+public class LiveArrayList<T> {
 	val values = new List<T>();
 	val listeners = new ListenerList<LiveList<T>.Listener<T>>();
 	

@@ -1,4 +1,4 @@
-export class LinkedList<T> {
+public class LinkedList<T> {
 	var first as Node?;
 	var last as Node?;
 	var size as usize : get;

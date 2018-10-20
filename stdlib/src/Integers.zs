@@ -1,5 +1,5 @@
 [Native("stdlib::Integer")]
-expand int {
+public expand int {
 	[Native("toHexString")]
 	public extern toHexString() as string;
 	

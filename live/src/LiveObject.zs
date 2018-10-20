@@ -1,4 +1,4 @@
-export interface LiveObject<T> {
+public interface LiveObject<T> {
 	get value as T;
 	
 	addListener(listener as Listener<T>) as ListenerHandle<T>`unique;

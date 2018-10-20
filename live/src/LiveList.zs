@@ -1,4 +1,4 @@
-export interface LiveList<T> : Iterable<T> {
+public interface LiveList<T> : Iterable<T> {
 	~this;
 	
 	get length as usize;

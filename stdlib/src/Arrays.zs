@@ -1,12 +1,12 @@
 [Native("stdlib::Arrays")]
-export expand <T : Comparable<T>> T[] {
+public expand <T : Comparable<T>> T[] {
 	[Native("sort")]
 	public extern sort() as void;
 	[Native("sorted")]
 	public extern sorted() as T[];
 }
 
-export expand <T : Hashable<T>> T[] {
+public expand <T : Hashable<T>> T[] {
 	public implements Hashable<T[]> {
 		public extern hashCode() as int;
 		public extern == (other as T[]) as bool;
@@ -14,7 +14,7 @@ export expand <T : Hashable<T>> T[] {
 }
 
 [Native("stdlib::Arrays")]
-export expand <T> T[] {
+public expand <T> T[] {
 	[Native("sortWithComparator")]
 	public extern sort(comparator as function(a as T, b as T) as int) as void;
 	[Native("sortedWithComparator")]

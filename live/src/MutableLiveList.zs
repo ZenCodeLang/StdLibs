@@ -1,4 +1,4 @@
-export interface MutableLiveList<T> : LiveList<T> {
+public interface MutableLiveList<T> : LiveList<T> {
 	add(value as T) as void;
 	
 	insert(index as usize, value as T) as void;

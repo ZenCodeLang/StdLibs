@@ -1,6 +1,6 @@
 import listeners.DummyListenerHandle;
 
-export class ImmutableLiveBool {
+public class ImmutableLiveBool {
 	public const TRUE = new ImmutableLiveBool(true);
 	public const FALSE = new ImmutableLiveBool(false);
 	

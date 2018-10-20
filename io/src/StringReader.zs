@@ -1,5 +1,5 @@
 [Native("io::StringReader")]
-export class StringReader {
+public class StringReader {
 	val data as char[];
 	var offset as usize;
 	

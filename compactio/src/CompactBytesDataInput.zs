@@ -1,4 +1,4 @@
-export class CompactBytesDataInput {
+public class CompactBytesDataInput {
 	private const P6 as uint = 1 << 6;
 	private const P7 as uint = 1 << 7;
 	private const P13 as uint = 1 << 13;

@@ -1,4 +1,4 @@
-export class DummyListenerHandle<T> {
+public class DummyListenerHandle<T> {
 	val listener as T : get;
 	
 	public this(listener as T) {

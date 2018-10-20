@@ -1,5 +1,5 @@
 [Native("stdlib::List")]
-export class List<T> {
+public class List<T> {
 	[Native("constructor")]
 	public this() {}
 	

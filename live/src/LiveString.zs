@@ -1,4 +1,4 @@
-export interface LiveString {
+public interface LiveString {
 	get value as string;
 	
 	addListener(listener as Listener) as ListenerHandle`unique;

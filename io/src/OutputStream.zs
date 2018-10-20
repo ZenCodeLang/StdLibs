@@ -1,5 +1,5 @@
 [Native("io::OutputStream")]
-export interface OutputStream {
+public interface OutputStream {
 	[Native("write")]
 	write(value as byte) as void throws IOException;
 	

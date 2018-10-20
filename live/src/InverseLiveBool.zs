@@ -1,4 +1,4 @@
-export class InverseLiveBool {
+public class InverseLiveBool {
 	val source as LiveBool;
 	
 	public this(source as LiveBool) {

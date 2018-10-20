@@ -1,6 +1,6 @@
 import listeners.DummyListenerHandle;
 
-export class ImmutableLiveString {
+public class ImmutableLiveString {
 	val value as string : get;
 	
 	public this(value as string) {

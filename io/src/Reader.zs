@@ -1,5 +1,5 @@
 [Native("io::Reader")]
-export interface Reader {
+public interface Reader {
 	[Native("destruct")]
 	~this;
 	

@@ -1,4 +1,4 @@
-export interface LiveInt {
+public interface LiveInt {
 	get value as int;
 	set value as int;
 	

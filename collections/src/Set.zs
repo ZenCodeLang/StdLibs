@@ -1,4 +1,4 @@
-export interface Set<T> {
+public interface Set<T> {
 	add(value as T) as bool;
 	remove(value as T) as bool;
 	

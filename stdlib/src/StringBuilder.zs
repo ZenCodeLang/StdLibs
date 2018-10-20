@@ -1,5 +1,5 @@
 [Native("stdlib::StringBuilder")]
-export class StringBuilder {
+public class StringBuilder {
 	[Native("constructor")]
 	public extern this();
 	[Native("constructorWithCapacity")]
@@ -41,8 +41,26 @@ export class StringBuilder {
 	[Native("appendString")]
 	public extern <<(value as string) as StringBuilder;
 	
-	public <<`shared(value as StringBuildable`borrow) as StringBuilder`shared {
+	public <<(value as StringBuildable`borrow) as StringBuilder {
 		value.toString(this);
+		return this;
+	}
+	
+	public append<T : StringBuildable>(values as T[]`borrow, separator as string) as StringBuilder {
+		for i, value in values {
+			if i > 0
+				this << separator;
+			value.toString(this);
+		}
+		return this;
+	}
+	
+	public append<T>(values as T[]`borrow, stringer as function(value as T) as string, separator as string) as StringBuilder {
+		for i, value in values {
+			if i > 0
+				this << separator;
+			this << stringer(value);
+		}
 		return this;
 	}
 	

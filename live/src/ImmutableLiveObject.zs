@@ -1,6 +1,6 @@
 import listeners.DummyListenerHandle;
 
-export class ImmutableLiveObject<T> {
+public class ImmutableLiveObject<T> {
 	val value as T : get;
 	
 	public this(value as T) {

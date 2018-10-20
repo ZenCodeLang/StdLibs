@@ -1,5 +1,5 @@
 [Native("stdlib::Exception")]
-export virtual class Exception {
+public virtual class Exception {
 	[Native("constructor")]
 	public this(message as string) {}
 	

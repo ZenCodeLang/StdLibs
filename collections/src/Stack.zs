@@ -1,6 +1,4 @@
-import stdlib.List;
-
-export class Stack<T> {
+public class Stack<T> {
 	var values as List<T> = new List<T>();
 	
 	public push(value as T) as void

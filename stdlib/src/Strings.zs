@@ -1,5 +1,5 @@
 [Native("stdlib::String")]
-export expand string {
+public expand string {
 	[Native("fromAsciiBytes")]
 	public static fromAsciiBytes(data as byte[]) as string;
 	

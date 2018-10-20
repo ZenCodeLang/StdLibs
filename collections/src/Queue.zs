@@ -1,4 +1,4 @@
-export interface Queue<T> {
+public interface Queue<T> {
 	get empty as bool;
 	
 	poll() as T;

@@ -1,4 +1,4 @@
-export interface CompactDataInput {
+public interface CompactDataInput {
 	readBool`mutable() as bool;
 	
 	readByte`mutable() as byte;
