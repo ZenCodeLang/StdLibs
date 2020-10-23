@@ -28,7 +28,7 @@ public class List<T> {
 	public in(value as T) as bool;
 	
 	[Native("toArray")]
-	public as T[];
+	public implicit as T[];
 	
 	[Native("length")]
 	public get length as usize;

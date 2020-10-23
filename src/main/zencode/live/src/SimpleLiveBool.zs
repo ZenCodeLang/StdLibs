@@ -1,15 +1,15 @@
 import listeners.ListenerList;
 
-public class SimpleLiveString {
-	val listeners = new ListenerList<LiveString.Listener>;
+public class SimpleLiveBool {
+	val listeners = new ListenerList<LiveBool.Listener>;
 	
-	var value as string : get;
+	var value as bool : get;
 	
-	public this(value as string) {
-		this.value = value;
+	public this(value as bool) {
+		$value = value;
 	}
 	
-	public implements MutableLiveString {
+	public implements MutableLiveBool {
 		addListener(listener) => listeners.add(listener);
 		
 		set value {

@@ -1,15 +1,15 @@
 import listeners.ListenerList;
 
-public class SimpleLiveInt {
-	val listeners = new ListenerList<LiveInt.Listener>;
+public class SimpleLiveString {
+	val listeners = new ListenerList<LiveString.Listener>;
 	
-	var value as int : get;
+	var value as string : get;
 	
-	public this(value as int) {
-		this.value = value;
+	public this(value as string) {
+		$value = value;
 	}
 	
-	public implements MutableLiveInt {
+	public implements MutableLiveString {
 		addListener(listener) => listeners.add(listener);
 		
 		set value {

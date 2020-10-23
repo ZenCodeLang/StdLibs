@@ -9,6 +9,10 @@ public expand string {
 	[Native("contains")]
 	public const in(c as char) as bool
 		=> indexOf(c) != null;
+		
+	[Native("containsString")]
+	public const in(s as string) as bool
+		=> indexOf(s) != null;
 	
 	[Native("indexOf")]
 	public const indexOf(c as char) as usize? {
@@ -29,6 +33,12 @@ public expand string {
 		
 		return null;
 	}
+	
+	[Native("indexOfString")]
+	public const indexOf(s as string) as usize?;
+	
+	[Native("indexOfStringFrom")]
+	public const indexOf(s as string, from as usize) as usize?;
 	
 	[Native("lastIndexOf")]
 	public const lastIndexOf(c as char) as usize? {
@@ -53,6 +63,12 @@ public expand string {
 		
 		return null;
 	}
+	
+	[Native("lastIndexOfString")]
+	public const lastIndexOf(s as string) as usize?;
+	
+	[Native("lastIndexOfStringFrom")]
+	public const lastIndexOf(s as string, until as usize?) as usize?;
 	
 	[Native("split")]
 	public const split(delimiter as char) as string[] {
@@ -80,6 +96,14 @@ public expand string {
 		return to < from ? "" : this[from .. to];
 	}
 	
+	[Native("startsWith")]
+	public const startsWith(head as string) as bool
+		=> length >= head.length && this[0 .. head.length] == head;
+	
+	[Native("endsWith")]
+	public const endsWith(tail as string) as bool
+		=> length >= tail.length && this[($ - tail.length) .. $] == tail;
+	
 	[Native("lpad")]
 	public const lpad(length as usize, c as char) as string
 		=> this.length >= length ? this : c.times(length - this.length) + this;
@@ -87,10 +111,10 @@ public expand string {
 	[Native("rpad")]
 	public const rpad(length as usize, c as char) as string
 		=> this.length >= length ? this : this + c.times(length - this.length);
-		
+	
 	[Native("toAsciiBytes")]
-	public const toAsciiBytes() as byte[]`unique;
+	public const toAsciiBytes() as byte[];
 	
 	[Native("toUTF8Bytes")]
-	public const toUTF8Bytes() as byte[]`unique;
+	public const toUTF8Bytes() as byte[];
 }

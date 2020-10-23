@@ -41,12 +41,12 @@ public class StringBuilder {
 	[Native("appendString")]
 	public extern <<(value as string) as StringBuilder;
 	
-	public <<(value as StringBuildable`borrow) as StringBuilder {
+	public <<(value as StringBuildable) as StringBuilder {
 		value.toString(this);
 		return this;
 	}
 	
-	public append<T : StringBuildable>(values as T[]`borrow, separator as string) as StringBuilder {
+	public append<T : StringBuildable>(values as T[], separator as string) as StringBuilder {
 		for i, value in values {
 			if i > 0
 				this << separator;
@@ -55,7 +55,7 @@ public class StringBuilder {
 		return this;
 	}
 	
-	public append<T>(values as T[]`borrow, stringer as function(value as T) as string, separator as string) as StringBuilder {
+	public append<T>(values as T[], stringer as function(value as T) as string, separator as string) as StringBuilder {
 		for i, value in values {
 			if i > 0
 				this << separator;
