@@ -10,6 +10,6 @@ public class LiveEmptyList<T> {
 		
 		iterate() => Iterator<T>.empty<T>();
 		
-		addListener(listener) => new DummyListenerHandle<Listener<T>>`unique(listener);
+		addListener(listener) => new DummyListenerHandle<Listener<T>>(listener);
 	}
 }

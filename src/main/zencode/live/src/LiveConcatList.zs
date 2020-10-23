@@ -6,8 +6,8 @@ import listeners.ListenerHandle;
 	val a as LiveList<T>;
 	val b as LiveList<T>;
 	
-	val aListener as ListenerHandle<LiveList<T>.Listener<T>>`unique;
-	val bListener as ListenerHandle<LiveList<T>.Listener<T>>`unique;
+	val aListener as ListenerHandle<LiveList<T>.Listener<T>>;
+	val bListener as ListenerHandle<LiveList<T>.Listener<T>>;
 	
 	public this(a as LiveList<T>, b as LiveList<T>) {
 		this.a = a;

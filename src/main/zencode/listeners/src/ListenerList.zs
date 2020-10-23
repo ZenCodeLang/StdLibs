@@ -3,14 +3,14 @@ public class ListenerList<T> {
 	public const PRIORITY_DEFAULT = 0;
 	public const PRIORITY_LOW = -100;
 	
-	var first as EventListenerNode`borrow? = null;
-	var last as EventListenerNode`borrow? = null;
+	var first as EventListenerNode? = null;
+	var last as EventListenerNode? = null;
 	
-	public add(listener as T) as ListenerHandle<T>`unique
+	public add(listener as T) as ListenerHandle<T>
 		=> add(listener, PRIORITY_DEFAULT);
 	
-	public add(listener as T, priority as int) as ListenerHandle<T>`unique {
-		val node = new EventListenerNode`unique(listener, priority);
+	public add(listener as T, priority as int) as ListenerHandle<T> {
+		val node = new EventListenerNode(listener, priority);
 		
 		if first == null {
 			first = last = node;
@@ -55,8 +55,8 @@ public class ListenerList<T> {
 	private class EventListenerNode {
 		val listener as T : get;
 		val priority as int;
-		var next as EventListenerNode`borrow? = null;
-		var prev as EventListenerNode`borrow? = null;
+		var next as EventListenerNode? = null;
+		var prev as EventListenerNode? = null;
 		
 		public this(listener as T, priority as int) {
 			this.listener = listener;

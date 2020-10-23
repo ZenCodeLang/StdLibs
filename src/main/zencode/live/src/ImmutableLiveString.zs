@@ -8,6 +8,6 @@ public class ImmutableLiveString {
 	}
 	
 	public implements LiveString {
-		addListener(listener) => new DummyListenerHandle<LiveString.Listener>`unique(listener);
+		addListener(listener) => new DummyListenerHandle<LiveString.Listener>(listener);
 	}
 }
