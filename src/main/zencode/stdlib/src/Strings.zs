@@ -68,7 +68,7 @@ public expand string {
 	public const lastIndexOf(s as string) as usize?;
 	
 	[Native("lastIndexOfStringFrom")]
-	public const lastIndexOf(s as string, until as usize?) as usize?;
+	public const lastIndexOf(s as string, until as usize) as usize?;
 	
 	[Native("split")]
 	public const split(delimiter as char) as string[] {
