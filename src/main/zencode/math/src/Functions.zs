@@ -61,6 +61,9 @@ public class Functions {
 	[Native("abs")]
 	public extern static abs(x as double) as double;
 
+	[Native("absInteger")]
+    public extern static abs(x as int) as int;
+
 	[Native("signum")]
 	public extern static signum(x as double) as double;
 
