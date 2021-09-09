@@ -87,4 +87,13 @@ public class Functions {
 
 	[Native("maxDouble")]
 	public extern static max(a as double, b as double) as double;
+
+	[Native("roundDouble")]
+    public extern static round(x as double) as long;
+
+	[Native("roundFloat")]
+    public extern static round(x as float) as long;
+
+    [Native("pow")]
+    public extern static pow(a as double, b as double) as double;
 }
