@@ -62,7 +62,7 @@ public class Functions {
 	public extern static abs(x as double) as double;
 
 	[Native("absInteger")]
-    public extern static abs(x as int) as int;
+	public extern static abs(x as int) as int;
 
 	[Native("signum")]
 	public extern static signum(x as double) as double;
@@ -92,11 +92,11 @@ public class Functions {
 	public extern static max(a as double, b as double) as double;
 
 	[Native("roundDouble")]
-    public extern static round(x as double) as long;
+	public extern static round(x as double) as long;
 
 	[Native("roundFloat")]
-    public extern static round(x as float) as long;
+	public extern static round(x as float) as long;
 
-    [Native("pow")]
-    public extern static pow(a as double, b as double) as double;
+	[Native("pow")]
+	public extern static pow(a as double, b as double) as double;
 }
