@@ -11,7 +11,10 @@ public class List<T> {
 	
 	[Native("remove")]
 	public remove(value as usize) as T;
-	
+
+	[Native("removeValue")]
+    public remove(value as T) as bool;
+
 	[Native("indexOf")]
 	public indexOf(value as T) as usize;
 	
