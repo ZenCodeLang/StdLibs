@@ -117,4 +117,8 @@ public expand string {
 	
 	[Native("toUTF8Bytes")]
 	public const toUTF8Bytes() as byte[];
+
+	[Native("isBlank")]
+	public get blank as bool => trim().isEmpty;
+
 }
