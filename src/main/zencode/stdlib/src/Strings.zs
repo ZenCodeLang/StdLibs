@@ -121,4 +121,16 @@ public expand string {
 	[Native("isBlank")]
 	public get blank as bool => trim().isEmpty;
 
+	[Native("compareToIgnoreCase")]
+	public const compareToIgnoreCase(s as string) as bool;
+
+	[Native("endsWith")]
+	public const endsWith(s as string) as bool;
+
+	[Native("equalsIgnoreCase")]
+	public const equalsIgnoreCase(s as string) as bool;
+
+	[Native("replace")]
+	public const replace(oldchar as char, newChar as char) as string;
+
 }
