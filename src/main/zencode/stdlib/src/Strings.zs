@@ -122,7 +122,7 @@ public expand string {
 	public get blank as bool => trim().isEmpty;
 
 	[Native("compareToIgnoreCase")]
-	public const compareToIgnoreCase(s as string) as bool;
+	public const compareToIgnoreCase(s as string) as int;
 
 	[Native("endsWith")]
 	public const endsWith(s as string) as bool;
@@ -131,6 +131,6 @@ public expand string {
 	public const equalsIgnoreCase(s as string) as bool;
 
 	[Native("replace")]
-	public const replace(oldchar as char, newChar as char) as string;
+	public const replace(oldChar as char, newChar as char) as string;
 
 }
