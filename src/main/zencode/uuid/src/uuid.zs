@@ -1,9 +1,9 @@
-[Native("uuid")]
-export class UUID {
+[Native("uuid::uuid")]
+public class UUID {
 	[Native("random")]
-	static random() as UUID;
+	public static random() as UUID;
 	
 	[Native("toString")]
-	as string;
+	public as string;
 }
 

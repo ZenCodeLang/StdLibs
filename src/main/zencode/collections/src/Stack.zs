@@ -1,3 +1,5 @@
+import stdlib.List;
+
 public class Stack<T> {
 	var values as List<T> = new List<T>();
 	

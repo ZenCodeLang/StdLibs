@@ -1,12 +1,29 @@
+import stdlib.Iterable;
+
+[Native("collections::Set")]
 public interface Set<T> {
-	add(value as T) as bool;
-	remove(value as T) as bool;
-	
-	get size as usize;
-	
-	toArray();
-	toArray(comparator as function(a as T, b as T) as int);
-	
-	in(value as T) as bool;
-	for(x as T);
+
+	[Native("add")]
+	public add(value as T) as void;
+
+	[Native("remove")]
+	public remove(value as T) as bool;
+
+	[Native("contains")]
+	public in(value as T) as bool;
+
+	[Native("toArray")]
+	public implicit as T[];
+
+	[Native("length")]
+	public get length as usize;
+
+	[Native("isEmpty")]
+	public get isEmpty as bool;
+
+	public implements Iterable<T> {
+		[Native("iterate")]
+		iterate();
+	}
+
 }
