@@ -86,15 +86,13 @@ public expand string {
 	// ToDo: This had a method body before but also a native binding, which to use?
 	public const endsWith(tail as string) as bool;
 
-    // ToDo: requires Chars.zs expansion
-	//[Native("lpad")]
-	//public const lpad(length as usize, c as char) as string
-	//	=> this.length >= length ? this : c.times(length - this.length) + this;
+	//[Native("lpad")] // ToDo: we either need to specify this native in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
+	public const lpad(length as usize, c as char) as string
+		=> this.length >= length ? this : c.times(length - this.length) + this;
 
-    // ToDo: requires Chars.zs expansion
-	//[Native("rpad")]
-	//public const rpad(length as usize, c as char) as string
-	//	=> this.length >= length ? this : this + c.times(length - this.length);
+	//[Native("rpad")] // ToDo: we either need to specify this native in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
+	public const rpad(length as usize, c as char) as string
+		=> this.length >= length ? this : this + c.times(length - this.length);
 
 	[Native("toAsciiBytes")]
 	public const toAsciiBytes() as byte[];
