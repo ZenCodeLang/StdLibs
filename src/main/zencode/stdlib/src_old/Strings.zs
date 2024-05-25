@@ -1,10 +1,5 @@
 [Native("stdlib::String")]
 public expand string {
-	[Native("fromAsciiBytes")]
-	public static fromAsciiBytes(data as byte[]) as string;
-	
-	[Native("fromUTF8Bytes")]
-	public static fromUTF8Bytes(data as byte[]) as string;
 	
 	[Native("contains")]
 	public const in(c as char) as bool
@@ -33,12 +28,6 @@ public expand string {
 		
 		return null;
 	}
-	
-	[Native("indexOfString")]
-	public const indexOf(s as string) as usize?;
-	
-	[Native("indexOfStringFrom")]
-	public const indexOf(s as string, from as usize) as usize?;
 	
 	[Native("lastIndexOf")]
 	public const lastIndexOf(c as char) as usize? {
@@ -111,26 +100,9 @@ public expand string {
 	[Native("rpad")]
 	public const rpad(length as usize, c as char) as string
 		=> this.length >= length ? this : this + c.times(length - this.length);
-	
-	[Native("toAsciiBytes")]
-	public const toAsciiBytes() as byte[];
-	
-	[Native("toUTF8Bytes")]
-	public const toUTF8Bytes() as byte[];
+
 
 	[Native("isBlank")]
 	public get blank as bool => trim().isEmpty;
-
-	[Native("compareToIgnoreCase")]
-	public const compareToIgnoreCase(s as string) as int;
-
-	[Native("endsWith")]
-	public const endsWith(s as string) as bool;
-
-	[Native("equalsIgnoreCase")]
-	public const equalsIgnoreCase(s as string) as bool;
-
-	[Native("replace")]
-	public const replace(oldChar as char, newChar as char) as string;
 
 }
