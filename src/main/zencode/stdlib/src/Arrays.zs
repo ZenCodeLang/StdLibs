@@ -71,7 +71,10 @@ public expand <T> T[] {
     //    return result;
     //}
 
-    // ToDo: Add lists back in before we can test this method
+    // ToDo: ERROR:   Arrays.zs:84:9: Cannot cast List<T@Arrays.zs:17:15> to T@Arrays.zs:17:15[], even explicitly
+    //       ERROR:   Arrays.zs:84:2: Provided a invalid where a T@Arrays.zs:17:15[] was expected
+    //       ERROR:   Arrays.zs:84:9: Cannot cast List<T@Arrays.zs:17:15> to T@Arrays.zs:17:15[], even explicitly
+    //       ERROR:   Arrays.zs:84:2: Provided a invalid where a T@Arrays.zs:17:15[] was expected
 	//[Native("filterValues")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
 	//public filter(predicate as function(value as T) as bool) as T[] {
 	//	var values = new List<T>();
@@ -198,11 +201,10 @@ public expand <T> T[] {
     //	return result;
     //}
 
-    // ToDo: requires Lists
-	//public implicit as List<T> {
-	//	var result = new List<T>();
-	//	for value in this
-	//		result.add(value);
-	//	return result;
-	//}
+	public implicit as List<T> {
+		var result = new List<T>();
+		for value in this
+			result.add(value);
+		return result;
+	}
 }
