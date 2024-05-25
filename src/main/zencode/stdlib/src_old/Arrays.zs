@@ -30,14 +30,14 @@ public expand <T> T[] {
 		=> this.isEmpty ? null : this[0];
 	
 	public get last as T?
-		=> this.isEmpty ? null : this[$ - (1 as usize)];
+		=> this.isEmpty ? null : this[this.length - (1 as usize)];
 	
 	[Native("reverse")]
 	public reverse() as void {
-		for i in 0 .. length / 2 {
+		for i in 0 .. length / (2 as usize) {
 			var temp = this[i];
-			this[i] = this[length - i - 1];
-			this[length - i - 1] = temp;
+			this[i] = this[length - i - (1 as usize)];
+			this[length - i - (1 as usize)] = temp;
 		}
 	}
 	
@@ -48,13 +48,23 @@ public expand <T> T[] {
 	}*/
 	
 	[Native("mapValues")]
-	public map<U>(projection as function(value as T) as U) as U[]
-		=> new U[]<T>(this, projection);
-	
+	public map<U>(projection as function(value as T) as U) as U[] {
+	    var result = new U[](length);
+	    for i in 0 .. this.length {
+	        result[i] = projection(this[i]);
+	    }
+	    return result;
+	}
+
 	[Native("mapKeyValues")]
-	public map<U>(projection as function(index as usize, value as T) as U) as U[]
-		=> new U[]<T>(this, projection);
-	
+	public map<U>(projection as function(index as usize, value as T) as U) as U[]{
+        var result = new U[](this.length);
+        for i in 0 .. this.length {
+            result[i] = projection(i, this[i]);
+        }
+        return result;
+    }
+
 	[Native("filterValues")]
 	public filter(predicate as function(value as T) as bool) as T[] {
 		var values = new List<T>();
