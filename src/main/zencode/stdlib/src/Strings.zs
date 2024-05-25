@@ -7,6 +7,7 @@ public expand string {
 	public static fromUTF8Bytes(data as byte[]) as string;
 
 	// ToDo: No operator COMPARE in type invalid
+	// ToDo, why do the tests StdLibFunctions#containsChar(String, char) still work?
 	//[Native("contains")]
 	//public const in(c as char) as bool
 	//	=> indexOf(c) != null;
@@ -15,7 +16,7 @@ public expand string {
 	//public const in(s as string) as bool
 	//	=> indexOf(s) != null;
 	
-	[Native("indexOf")]
+	//[Native("indexOf")] // ToDo: indexOf from Java and ZC have different signatures!
 	public const indexOf(c as char) as usize? {
 		for i in 0 .. length {
 			if this[i] == c
