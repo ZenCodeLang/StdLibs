@@ -5,15 +5,20 @@ public expand string {
 	
 	[Native("fromUTF8Bytes")]
 	public static fromUTF8Bytes(data as byte[]) as string;
-	
+
+
+	// ToDo: Without "this." we get an error...
 	[Native("contains")]
 	public const in(c as char) as bool
-		=> indexOf(c) != null;
-		
+		=> this.indexOf(c) != null;
+
+	// ToDo: Without "this." we get an error...
 	[Native("containsString")]
 	public const in(s as string) as bool
-		=> indexOf(s) != null;
-	
+		=> this.indexOf(s) != null;
+
+
+	// ToDo: indexOf from Java and ZC have different signatures!
 	[Native("indexOf")]
 	public const indexOf(c as char) as usize? {
 		for i in 0 .. length {
@@ -30,7 +35,7 @@ public expand string {
 			if this[i] == c
 				return i;
 		}
-		
+
 		return null;
 	}
 	
@@ -39,7 +44,7 @@ public expand string {
 	
 	[Native("indexOfStringFrom")]
 	public const indexOf(s as string, from as usize) as usize?;
-	
+
 	[Native("lastIndexOf")]
 	public const lastIndexOf(c as char) as usize? {
 		var i = length;
@@ -48,10 +53,10 @@ public expand string {
 			if this[i] == c
 				return i;
 		}
-		
+
 		return null;
 	}
-	
+
 	[Native("lastIndexOfFrom")]
 	public const lastIndexOf(c as char, until as usize) as usize? {
 		var i = until;
@@ -60,66 +65,56 @@ public expand string {
 			if this[i] == c
 				return i;
 		}
-		
+
 		return null;
 	}
-	
+
 	[Native("lastIndexOfString")]
 	public const lastIndexOf(s as string) as usize?;
-	
+
 	[Native("lastIndexOfStringFrom")]
 	public const lastIndexOf(s as string, until as usize) as usize?;
-	
-	[Native("split")]
-	public const split(delimiter as char) as string[] {
-		val result = new List<string>();
-		var start = 0 as usize;
-		for i in 0 .. this.length {
-			if this[i] == delimiter {
-				result.add(this[start .. i]);
-				start = i + 1;
-			}
-		}
-		result.add(this[start .. $]);
-		return result as string[];
-	}
-	
-	[Native("trim")]
-	public const trim() as string {
-		var from = 0 as usize;
-		while from < this.length && this[from] in [' ', '\t', '\r', '\n']
-			from++;
-		var to = this.length;
-		while to > 0 && this[to - 1] in [' ', '\t', '\r', '\n']
-			to--;
-		
-		return to < from ? "" : this[from .. to];
-	}
-	
+
+    // ToDo: cannot cast List<T> to T[]
+	//[Native("split")]
+	//public const split(delimiter as char) as string[] {
+	//	val result = new List<string>();
+	//	var start = 0 as usize;
+	//	for i in 0 .. this.length {
+	//		if this[i] == delimiter {
+	//			result.add(this[start .. i]);
+	//			start = i + 1;
+	//		}
+	//	}
+	//	result.add(this[start .. $]);
+	//	return result as string[];
+	//}
+
 	[Native("startsWith")]
 	public const startsWith(head as string) as bool
 		=> length >= head.length && this[0 .. head.length] == head;
-	
+
 	[Native("endsWith")]
 	public const endsWith(tail as string) as bool
 		=> length >= tail.length && this[($ - tail.length) .. $] == tail;
-	
+
 	[Native("lpad")]
 	public const lpad(length as usize, c as char) as string
 		=> this.length >= length ? this : c.times(length - this.length) + this;
-	
+
 	[Native("rpad")]
 	public const rpad(length as usize, c as char) as string
 		=> this.length >= length ? this : this + c.times(length - this.length);
-	
+
 	[Native("toAsciiBytes")]
 	public const toAsciiBytes() as byte[];
-	
+
 	[Native("toUTF8Bytes")]
 	public const toUTF8Bytes() as byte[];
 
+    // ToDo: Without "this." we get Error: No enum or variant member named trim in type bool
 	[Native("isBlank")]
-	public get blank as bool => trim().isEmpty;
+	public get blank as bool => this.trim().isEmpty;
 
 	[Native("compareToIgnoreCase")]
 	public const compareToIgnoreCase(s as string) as int;
