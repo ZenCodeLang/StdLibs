@@ -119,9 +119,6 @@ public expand string {
 	[Native("compareToIgnoreCase")]
 	public const compareToIgnoreCase(s as string) as int;
 
-	[Native("endsWith")]
-	public const endsWith(s as string) as bool;
-
 	[Native("equalsIgnoreCase")]
 	public const equalsIgnoreCase(s as string) as bool;
 
