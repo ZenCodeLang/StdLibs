@@ -41,35 +41,20 @@ public expand <T> T[] {
 		}
 	}
 
-	// TODO: fix compilation for these (see expansions_8.zc test)
-	//[Native("reversed")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
-	//public reversed() as T[] {
-	//	var result = new T[](this.length);
-	//	for i in 0 .. length {
-	//		result[i] = this[length - i];
-	//	}
-	//	return result;
-	//}
+	[Native("reversed")]
+	public reversed() as T[] {
+		return new T[](this.length, i => this[length - i -1]);
+	}
 
-	// TODO: fix compilation for these (see expansions_7.zc test)
-	//[Native("mapValues")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
-	//public map<U>(projection as function(value as T) as U) as U[] {
-	//	var result = new U[](length);
-	//	for i in 0 .. this.length {
-	//		result[i] = projection(this[i]);
-	//	}
-	//	return result;
-	//}
+	[Native("mapValues")]
+	public map<U>(projection as function(value as T) as U) as U[] {
+		return new U[](length, i => projection(this[i]));
+	}
 
-	// TODO: fix compilation for these (see expansions_7.zc test which should fix this method as well)
-	//[Native("mapKeyValues")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
-	//public map<U>(projection as function(index as usize, value as T) as U) as U[]{
-	//	var result = new U[](this.length);
-	//	for i in 0 .. this.length {
-	//		result[i] = projection(i, this[i]);
-	//	}
-	//	return result;
-	//}
+	[Native("mapKeyValues")]
+	public map<U>(projection as function(index as usize, value as T) as U) as U[]{
+		return new U[](this.length, i => projection(i, this[i]));
+	}
 
 	// ToDo: ERROR:   Arrays.zs:84:9: Cannot cast List<T@Arrays.zs:17:15> to T@Arrays.zs:17:15[], even explicitly
 	//	   ERROR:   Arrays.zs:84:2: Provided a invalid where a T@Arrays.zs:17:15[] was expected
