@@ -90,6 +90,18 @@ public expand string {
 	//	return result as string[];
 	//}
 
+	[Native("trim")]
+	public const trim() as string {
+		var from = 0 as usize;
+		while from < this.length && this[from] in [' ', '\t', '\r', '\n']
+			from++;
+		var to = this.length;
+		while to > 0 && this[to - 1] in [' ', '\t', '\r', '\n']
+			to--;
+
+		return to < from ? "" : this[from .. to];
+	}
+
 	[Native("startsWith")]
 	public const startsWith(head as string) as bool
 		=> length >= head.length && this[0 .. head.length] == head;
