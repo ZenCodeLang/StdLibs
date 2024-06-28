@@ -56,28 +56,23 @@ public expand <T> T[] {
 		return new U[](this.length, i => projection(i, this[i]));
 	}
 
-	// ToDo: ERROR:   Arrays.zs:84:9: Cannot cast List<T@Arrays.zs:17:15> to T@Arrays.zs:17:15[], even explicitly
-	//	   ERROR:   Arrays.zs:84:2: Provided a invalid where a T@Arrays.zs:17:15[] was expected
-	//	   ERROR:   Arrays.zs:84:9: Cannot cast List<T@Arrays.zs:17:15> to T@Arrays.zs:17:15[], even explicitly
-	//	   ERROR:   Arrays.zs:84:2: Provided a invalid where a T@Arrays.zs:17:15[] was expected
-	//[Native("filterValues")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
-	//public filter(predicate as function(value as T) as bool) as T[] {
-	//	var values = new List<T>();
-	//	for value in this
-	//		if predicate(value)
-	//			values.add(value);
-	//	return values as T[];
-	//}
+	[Native("filterValues")]
+	public filter(predicate as function(value as T) as bool) as T[] {
+		var values = new List<T>();
+		for value in this
+			if predicate(value)
+				values.add(value);
+		return values as T[];
+	}
 
-	// ToDo: Add lists back in before we can test this method
-	//[Native("filterKeyValues")] // we either need to specify reverse in the JavaPrepareDefinitionVisitor or we just keep it as non-native expansion?
-	//public filter(predicate as function(index as usize, value as T) as bool) as T[] {
-	//	var values = new List<T>();
-	//	for i, value in this
-	//		if predicate(i, value)
-	//			values.add(value);
-	//	return values as T[];
-	//}
+	[Native("filterKeyValues")]
+	public filter(predicate as function(index as usize, value as T) as bool) as T[] {
+		var values = new List<T>();
+		for i, value in this
+			if predicate(i, value)
+				values.add(value);
+		return values as T[];
+	}
 
 	public each(consumer as function(value as T) as void) as void {
 		for value in this
@@ -175,13 +170,12 @@ public expand <T> T[] {
 		return result;
 	}
 
-	// ToDo: cannot infer type arguments properly
-	//public index<K>(key as function(value as T) as K) as T[K] {
-	//	var result = new T[K];
-	//	for value in this
-	//		result[key(value)] = value;
-	//	return result;
-	//}
+	public index<K>(key as function(value as T) as K) as T[K] {
+		var result = {} as T[K];
+		for value in this
+			result[key(value)] = value;
+		return result;
+	}
 
 	public implicit as List<T> {
 		var result = new List<T>();
