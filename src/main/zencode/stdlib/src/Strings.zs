@@ -75,20 +75,19 @@ public expand string {
 	[Native("lastIndexOfStringFrom")]
 	public const lastIndexOf(s as string, until as usize) as usize?;
 
-    // ToDo: cannot cast List<T> to T[]
-	//[Native("split")]
-	//public const split(delimiter as char) as string[] {
-	//	val result = new List<string>();
-	//	var start = 0 as usize;
-	//	for i in 0 .. this.length {
-	//		if this[i] == delimiter {
-	//			result.add(this[start .. i]);
-	//			start = i + 1;
-	//		}
-	//	}
-	//	result.add(this[start .. $]);
-	//	return result as string[];
-	//}
+	[Native("split")]
+	public const split(delimiter as char) as string[] {
+		val result = new List<string>();
+		var start = 0 as usize;
+		for i in 0 .. this.length {
+			if this[i] == delimiter {
+				result.add(this[start .. i]);
+				start = i + 1;
+			}
+		}
+		result.add(this[start .. $]);
+		return result as string[];
+	}
 
 	[Native("trim")]
 	public const trim() as string {
