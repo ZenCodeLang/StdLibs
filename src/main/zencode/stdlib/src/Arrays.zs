@@ -36,14 +36,14 @@ public expand <T> T[] {
 	public reverse() as void {
 		for i in 0 .. length / 2 {
 			var temp = this[i];
-			this[i] = this[length - i - 1];
+			this[i] = this[$ - i - 1];
 			this[length - i - 1] = temp;
 		}
 	}
 
 	[Native("reversed")]
 	public reversed() as T[] {
-		return new T[](this.length, i => this[length - i -1]);
+		return new T[](length, i => this[$ - i -1]);
 	}
 
 	[Native("mapValues")]
@@ -53,7 +53,7 @@ public expand <T> T[] {
 
 	[Native("mapKeyValues")]
 	public map<U>(projection as function(index as usize, value as T) as U) as U[]{
-		return new U[](this.length, i => projection(i, this[i]));
+		return new U[](length, i => projection(i, this[i]));
 	}
 
 	[Native("filterValues")]
