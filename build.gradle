@@ -1,5 +1,5 @@
-task zipItUp(type: Zip) {
-    from fileTree(dir: "${project.projectDir}/src/main/zencode")
+tasks.register('zipItUp', Zip) {
+	from fileTree(dir: "${project.projectDir}/src/main/zencode")
 	archiveFileName = "${project.name}.jar"
 }
 
