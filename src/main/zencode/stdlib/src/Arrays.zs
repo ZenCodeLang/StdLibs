@@ -27,10 +27,10 @@ public expand <T> T[] {
 	public extern copyTo(target as T[], sourceOffset as usize, targetOffset as usize, length as usize) as void;
 
 	public get first as T?
-		=> this.isEmpty ? null : this[0];
+		=> isEmpty ? null : this[0];
 
 	public get last as T?
-		=> this.isEmpty ? null : this[$ - (1 as usize)];
+		=> isEmpty ? null : this[$ - (1 as usize)];
 
 	[Native("reverse")]
 	public reverse() as void {
