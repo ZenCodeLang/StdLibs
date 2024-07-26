@@ -7,15 +7,13 @@ public expand string {
 	public static fromUTF8Bytes(data as byte[]) as string;
 
 
-	// ToDo: Without "this." we get an error...
 	[Native("contains")]
 	public const in(c as char) as bool
-		=> this.indexOf(c) != null;
+		=> indexOf(c) != null;
 
-	// ToDo: Without "this." we get an error...
 	[Native("containsString")]
 	public const in(s as string) as bool
-		=> this.indexOf(s) != null;
+		=> indexOf(s) != null;
 
 
 	// ToDo: indexOf from Java and ZC have different signatures!
@@ -79,7 +77,7 @@ public expand string {
 	public const split(delimiter as char) as string[] {
 		val result = new List<string>();
 		var start = 0 as usize;
-		for i in 0 .. this.length {
+		for i in 0 .. length {
 			if this[i] == delimiter {
 				result.add(this[start .. i]);
 				start = i + 1;
@@ -92,9 +90,9 @@ public expand string {
 	[Native("trim")]
 	public const trim() as string {
 		var from = 0 as usize;
-		while from < this.length && this[from] in [' ', '\t', '\r', '\n']
+		while from < length && this[from] in [' ', '\t', '\r', '\n']
 			from++;
-		var to = this.length;
+		var to = length;
 		while to > 0 && this[to - 1] in [' ', '\t', '\r', '\n']
 			to--;
 
@@ -123,9 +121,8 @@ public expand string {
 	[Native("toUTF8Bytes")]
 	public const toUTF8Bytes() as byte[];
 
-    // ToDo: Without "this." we get Error: No enum or variant member named trim in type bool
 	[Native("isBlank")]
-	public get blank as bool => this.trim().isEmpty;
+	public get blank as bool => trim().isEmpty;
 
 	[Native("compareToIgnoreCase")]
 	public const compareToIgnoreCase(s as string) as int;
