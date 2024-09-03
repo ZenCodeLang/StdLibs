@@ -56,9 +56,9 @@ public expand string {
 	}
 
 	[Native("lastIndexOfFrom")]
-	public const lastIndexOf(c as char, until as usize) as usize? {
-		var i = until;
-		while i > 0 {
+	public const lastIndexOf(c as char, from as usize) as usize? {
+		var i = length;
+		while i > from {
 			i--;
 			if this[i] == c
 				return i;
