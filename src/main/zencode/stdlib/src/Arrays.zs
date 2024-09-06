@@ -176,11 +176,4 @@ public expand <T> T[] {
 			result[key(value)] = value;
 		return result;
 	}
-
-	public implicit as List<T> {
-		var result = new List<T>();
-		for value in this
-			result.add(value);
-		return result;
-	}
 }

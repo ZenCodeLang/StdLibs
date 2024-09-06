@@ -2,6 +2,13 @@
 public class List<T> {
 	[Native("constructor")]
 	public this() {}
+
+	public implicit this(array as T[]) {
+		var result = new List<T>();
+		for value in array
+			result.add(value);
+		return result;
+	}
 	
 	[Native("add")]
 	public add(value as T) as void;
