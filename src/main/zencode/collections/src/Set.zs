@@ -1,7 +1,7 @@
 import stdlib.Iterable;
 
 [Native("collections::Set")]
-public interface Set<T> {
+public interface Set<T> : Iterable<T> {
 
 	[Native("add")]
 	public add(value as T) as void;
@@ -20,10 +20,4 @@ public interface Set<T> {
 
 	[Native("isEmpty")]
 	public get isEmpty as bool;
-
-	public implements Iterable<T> {
-		[Native("iterate")]
-		iterate();
-	}
-
 }

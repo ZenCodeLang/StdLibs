@@ -1,5 +1,8 @@
 [Native("collections::HashSet")]
 public class HashSet<T> {
-	public implements Set<T> {
-	}
+	[Native("constructor")]
+	public extern this();
+
+	[Native("")]
+	public extern implements Set<T>;
 }
