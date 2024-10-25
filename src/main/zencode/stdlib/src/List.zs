@@ -39,9 +39,6 @@ public class List<T> {
 	[Native("isEmpty")]
 	public get isEmpty as bool;
 
-	// ToDo: java.lang.UnsupportedOperationException: Non-inline interface implementations not yet available
-	//public implements Iterable<T> {
-	//	[Native("iterate")]
-	//	iterate();
-	//}
+	[Native("")]
+    public extern implements Iterable<T>;
 }
