@@ -1,5 +1,37 @@
-tasks.register('zipItUp', Zip) {
-	from fileTree(dir: "${project.projectDir}/src/main/zencode")
-	archiveFileName = "${project.name}.jar"
+plugins {
+	id 'maven-publish'
 }
 
+version = "0.3.8"
+group = "org.openzen.zencode"
+
+tasks.register('zipItUp', Zip) {
+	from file("src/main/zencode")
+	archiveFileName = "${project.name}.jar"
+	// To match old behaviour
+	destinationDirectory = project.layout.buildDirectory.dir("distributions")
+}
+
+configurations {
+	zip {
+		canBeResolved = false
+		canBeConsumed = true
+	}
+}
+
+artifacts {
+	zip tasks.named("zipItUp").get().outputs.files.singleFile
+}
+
+publishing {
+	publications {
+		register('zip', MavenPublication) {
+			artifact(tasks.named("zipItUp").get().outputs.files.singleFile)
+		}
+	}
+	repositories {
+		maven {
+			url System.getenv('local_maven_url')
+		}
+	}
+}
