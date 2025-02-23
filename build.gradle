@@ -20,7 +20,7 @@ configurations {
 }
 
 artifacts {
-	zip tasks.named("zipItUp").get().outputs.files.singleFile
+	zip tasks.named("zipItUp")
 }
 
 publishing {
